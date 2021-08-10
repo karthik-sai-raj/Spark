@@ -10,7 +10,9 @@ import java.util.List;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.PairFunction;
+
 
 import scala.Tuple2;
 
@@ -50,6 +52,16 @@ public class TransformationAndAction {
 		//System.out.println("MAP +y");
 		//stringexp.foreach(y->System.out.println(y));
 		
+		/*python map()*
+		 * 
+		 * x = sc.parallelize(["b", "a", "c"]) 
+			y = x.map(lambda z: (z, 1))
+			print(x.collect())
+			print(y.collect())
+
+		 * 
+		 * /
+		
 		
 		/*FLAT-MAP*/
 		System.out.println("FLAT-MAP +rdd1");
@@ -67,7 +79,15 @@ public class TransformationAndAction {
 		JavaRDD<String> fmrdd2=stringrdd.flatMap(s-> Arrays.asList(s.split(" ")).iterator());
 		//fmrdd2.collect();
 		fmrdd2.foreach(y->System.out.println(y));
-		
+		/*Flatmap()
+		 * 
+		 *x = sc.parallelize([1,2,3]) 
+			y = x.flatMap(lambda x: (x, x*100, 42))
+			print(x.collect())
+			print(y.collect())
+ 
+		 * 
+		 * */
 		
 		
 		/*FILTER*/
@@ -81,26 +101,58 @@ public class TransformationAndAction {
 		result.foreach(x->System.out.println(x));
 		
 		filterString.foreach(y->System.out.println(y));
-		
+		/*python filter()
+		 * x = sc.parallelize([1,2,3])
+			y = x.filter(lambda x: x%2 == 1) #keep odd values
+			print(x.collect())
+			print(y.collect())
+		 * */
 		
 		
 		/*MAP TO PAIR*/
 		
-		JavaPairRDD<Integer,Integer> pairrdd= intrdd.mapToPair(
-				new PairFunction<Integer, Integer,Integer>(){
+		JavaPairRDD<String,Integer> pairrdd= fmrdd2.mapToPair(
+				new PairFunction<String, String,Integer>(){
 
 					private static final long serialVersionUID = 1L;
 
 					@Override
-					public Tuple2<Integer, Integer> call(Integer t) throws Exception {
+					public Tuple2<String, Integer> call(String t) throws Exception {
 						// TODO Auto-generated method stub
-						return new Tuple2<Integer, Integer>(t,1);
+						return new Tuple2<String, Integer>(t,1);
 					}
 					
 				});
 		pairrdd.foreach(f->System.out.println(f));
 		
-	}//main
+		
+		
+		/*Reduce by key*/
+		System.out.println("Reduce by key");
+		JavaPairRDD<String, Integer> rbk= pairrdd.reduceByKey(new Function2<Integer,Integer,Integer>(){
+					@Override
+					public Integer call(Integer v1, Integer v2) throws Exception {
+						// TODO Auto-generated method stub
+						System.out.println(v1+" / "+v2);
+						return v1+v2;
+					}
+					
+				});
+		rbk.foreach(x->System.out.println(x));
+		
+	/*sort by key*/
+		System.out.println("sort by key ");
+		JavaPairRDD<String, Integer> sbk=rbk.sortByKey();//false decending order
+		sbk.foreach(x -> System.out.println(x));
+		
+		
+		
+		/*SAMPLE*/
+		JavaPairRDD<String, Integer> sample=rbk.sample(false, 1, 3);
+		System.out.println("Sample");
+		sample.foreach(x -> System.out.println(x));
+		
+	}//main 
 
 	
 	
