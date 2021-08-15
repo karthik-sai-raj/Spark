@@ -49,8 +49,8 @@ public class TransformationAndAction {
 //		stringexp.collect();
 		System.out.println("MAPtopair + pairrdd");
 		addnum.foreach(x -> System.out.println(x));
-		//System.out.println("MAP +y");
-		//stringexp.foreach(y->System.out.println(y));
+		System.out.println("MAP +y");
+		stringexp.foreach(y->System.out.println(y));
 		
 		/*python map()*
 		 * 
@@ -151,6 +151,20 @@ public class TransformationAndAction {
 		JavaPairRDD<String, Integer> sample=rbk.sample(false, 1, 3);
 		System.out.println("Sample");
 		sample.foreach(x -> System.out.println(x));
+		
+		
+		
+		/*randomSplit*/
+		
+		//JavaPairRDD<String ,Integer>[] splits=rbk.randomSplit(new double[] {0.6,0.4}, 11l);
+		
+		/*union*/
+		System.out.println("UNION OPERATION SET THEORY");
+		JavaRDD<Integer> example =sc.parallelize(Arrays.asList(6,7,8,9,0));
+		JavaRDD<Integer> union= example.union(intrdd);
+		union.foreach(x -> System.out.println(x));
+		
+		
 		
 	}//main 
 

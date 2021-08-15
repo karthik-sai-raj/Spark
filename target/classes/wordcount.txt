@@ -1,0 +1,36 @@
+In a very short time, Apache Spark has emerged as the next generation big data proâ€�
+cessing engine, and is being applied throughout the industry faster than ever. Spark
+improves over Hadoop MapReduce, which helped ignite the big data revolution, in
+several key dimensions: it is much faster, much easier to use due to its rich APIs, and
+it goes far beyond batch applications to support a variety of workloads, including
+interactive queries, streaming, machine learning, and graph processing.
+I have been privileged to be closely involved with the development of Spark all the
+way from the drawing board to what has become the most active big data open
+source project today, and one of the most active Apache projects! As such, Iâ€™m particâ€�
+ularly delighted to see Matei Zaharia, the creator of Spark, teaming up with other
+longtime Spark developers Patrick Wendell, Andy Konwinski, and Holden Karau to
+write this book.
+With Sparks rapid rise in popularity, a major concern has been lack of good reference 
+material. This book goes a long way to address this concern, with 11 chapters
+and dozens of detailed examples designed for data scientists, students, and developers
+looking to learn Spark. It is written to be approachable by readers with no backâ€�
+ground in big data, making it a great place to start learning about the field in general.
+I hope that many years from now, you and other readers will fondly remember this as
+the book that introduced you to this exciting new field.
+As parallel data analysis has grown common, practitioners in many fields have sought
+easier tools for this task. Apache Spark has quickly emerged as one of the most popuâ€�
+lar, extending and generalizing MapReduce. Spark offers three main benefits. First, it
+is easy to useâ€”you can develop applications on your laptop, using a high-level API
+that lets you focus on the content of your computation. Second, Spark is fast, enaâ€�
+bling interactive use and complex algorithms. And third, Spark is a general engine,
+letting you combine multiple types of computations (e.g., SQL queries, text processâ€�
+ing, and machine learning) that might previously have required different engines.
+These features make Spark an excellent starting point to learn about Big Data in
+general.
+This introductory book is meant to get you up and running with Spark quickly.
+Youâ€™ll learn how to download and run Spark on your laptop and use it interactively
+to learn the API. Once there, weâ€™ll cover the details of available operations and disâ€�
+tributed execution. Finally, youâ€™ll get a tour of the higher-level libraries built into
+Spark, including libraries for machine learning, stream processing, and SQL. We
+hope that this book gives you the tools to quickly tackle data analysis problems,
+whether you do so on one machine or hundreds.
