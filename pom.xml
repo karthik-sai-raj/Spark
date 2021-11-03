@@ -11,13 +11,48 @@
   <dependencies>
 
   	
-  	<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
 		<dependency>
 		    <groupId>org.apache.spark</groupId>
 		    <artifactId>spark-core_2.12</artifactId>
 		    <version>3.0.0</version>
 		</dependency>
-  	
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-sql_2.12</artifactId>
+		    <version>3.0.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		<!-- org.apache.kafka/kafka-clients -->
+		<dependency>
+		    <groupId>org.apache.kafka</groupId>
+		    <artifactId>kafka-clients</artifactId>
+		    <version>3.0.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-simple</artifactId>
+		    <version>1.7.32</version>
+		    <scope>test</scope>
+		</dependency>
+		<!--  -this is for structured streaming	-->
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-streaming-kafka-0-10_2.12</artifactId>
+		    <version>3.0.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-sql-kafka-0-10_2.12</artifactId>
+		    <version>3.0.0</version>
+		</dependency>
+		<!-- this is for unstructurd streaming java api -->
+		<dependency>
+		    <groupId>org.apache.spark</groupId>
+		    <artifactId>spark-streaming_2.12</artifactId>
+		    <version>2.4.8</version>
+		    <scope>provided</scope>
+		</dependency>
+		
   
   </dependencies>
   
